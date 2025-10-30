@@ -1,0 +1,16 @@
+ used dependies for that-pip install requests requests-oauthlib
+pip show requests-oauthlib-show modyler
+pip install mysql-connector-python-mysql conncet
+pip list
+$env:OAUTHLIB_INSECURE_TRANSPORT = 1-tell oauthlib-local level
+python app.py
+
+python app.py --cert=cert.pem --key=key.pem-prduction level
+set OAUTHLIB_INSECURE_TRANSPORT=1
+python app.py
+pip install flask flask-mysql flask-mail - verfication code sewending
+python-dotenv==1.0.0
+sendgrid==6.11.0-for send email moduler
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+pip install python-dotenv==1.0.0
