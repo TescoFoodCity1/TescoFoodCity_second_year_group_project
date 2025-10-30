@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment Dashboard</title>
+  <style>
+    table { width:100%; border-collapse:collapse; }
+    th, td { border:1px solid #ccc; padding:8px; }
+    th { background:#f8f8f8; }
+    select, button { padding:5px; }
+  </style>
+</head>
+<body>
+  <h1>Welcome Payment Staff {{ payment_name }}</h1>
+  <a href="{{ url_for('payment_logout') }}">Logout</a>
+
+  <h2>Payments</h2>
+  <table>
+    <tr><th>ID</th><th>Order ID</th><th>User</th><th>Amount</th><th>Method</th><th>Status</th><th>Update</th></tr>
+    {% for p in payments %}
+    <tr>
+      <td>{{ p.id }}</td>
+      <td>{{ p.order_id }}</td>
+      <td>{{ p.user_email }}</td>
+      <td>{{ p.amount }}</td>
+      <td>{{ p.payment_method }}</td>
+      <td>{{ p.status }}</td>
+      <td>
+        <form method="POST" action="{{ url_for('update_payment', payment_id=p.id) }}">
+          <select name="status">
+            <option value="Completed" {% if p.status=='Completed' %}selected{% endif %}>Completed</option>
+            <option value="Failed" {% if p.status=='Failed' %}selected{% endif %}>Failed</option>
+          </select>
+          <button type="submit">Update</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

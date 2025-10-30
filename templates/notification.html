@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tesco Food City</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #f8f9fa;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #28a745;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 30px;
+      position: relative;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .navbar .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .navbar .icons {
+      position: relative;
+    }
+
+    /* Notification Bell */
+    .notification-bell {
+      position: relative;
+      cursor: pointer;
+      font-size: 22px;
+      color: white;
+    }
+
+    .notification-bell .count {
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background: red;
+      color: white;
+      font-size: 11px;
+      padding: 2px 5px;
+      border-radius: 50%;
+    }
+
+    /* Dropdown Panel */
+    .notification-dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 45px;
+      width: 320px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      overflow: hidden;
+      z-index: 999;
+    }
+
+    .notification-header {
+      background: #28a745;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .notification-list {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .notification-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+      transition: background 0.2s;
+    }
+
+    .notification-item:hover {
+      background: #f6f6f6;
+    }
+
+    .notification-item i {
+      color: #28a745;
+      font-size: 20px;
+      margin-top: 2px;
+    }
+
+    .notification-content {
+      flex: 1;
+    }
+
+    .notification-content h4 {
+      margin: 0;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .notification-content p {
+      margin: 2px 0 0;
+      font-size: 12px;
+      color: #777;
+    }
+
+    .notification-time {
+      font-size: 11px;
+      color: #aaa;
+      margin-top: 5px;
+    }
+
+    .notification-footer {
+      text-align: center;
+      padding: 8px;
+      background: #f8f9fa;
+    }
+
+    .notification-footer a {
+      text-decoration: none;
+      color: #28a745;
+      font-size: 13px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">Tesco Food City</div>
+
+    <div class="icons">
+      <div class="notification-bell" id="bell">
+        <i class="fa-solid fa-bell"></i>
+        <span class="count" id="count">3</span>
+      </div>
+
+      <div class="notification-dropdown" id="dropdown">
+        <div class="notification-header">Notifications</div>
+        <div class="notification-list">
+          <div class="notification-item">
+            <i class="fa-solid fa-truck"></i>
+            <div class="notification-content">
+              <h4>Your order #2456 is out for delivery</h4>
+              <p>Expected to arrive by 5:00 PM</p>
+              <div class="notification-time">10 mins ago</div>
+            </div>
+          </div>
+          <div class="notification-item">
+            <i class="fa-solid fa-percent"></i>
+            <div class="notification-content">
+              <h4>Weekend Offer: Flat 15% Off!</h4>
+              <p>Available on all dairy products till Sunday</p>
+              <div class="notification-time">1 hour ago</div>
+            </div>
+          </div>
+          <div class="notification-item">
+            <i class="fa-solid fa-check-circle"></i>
+            <div class="notification-content">
+              <h4>Order #2409 Delivered Successfully</h4>
+              <p>Thank you for shopping with us!</p>
+              <div class="notification-time">2 days ago</div>
+            </div>
+          </div>
+        </div>
+        <div class="notification-footer">
+          <a href="#">View All Notifications</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const bell = document.getElementById('bell');
+    const dropdown = document.getElementById('dropdown');
+
+    bell.addEventListener('click', () => {
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Close dropdown if clicked outside
+    document.addEventListener('click', (e) => {
+      if (!bell.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>

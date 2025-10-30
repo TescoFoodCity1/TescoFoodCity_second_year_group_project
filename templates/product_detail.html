@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ product['name'] }} - Tesco Food City</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; padding: 0; }
+    .navbar { display:flex; justify-content:space-between; align-items:center; padding:10px 20px; background:#f8f9fa; border-bottom:1px solid #ddd; position:relative; }
+    .logo img { height:50px; }
+    .nav-links { list-style:none; display:flex; gap:20px; margin:0; padding:0; }
+    .nav-links li a { text-decoration:none; color:#333; font-weight:500; }
+    .nav-links li a:hover { color:#155724; }
+    .search-bar { position:relative; display:flex; align-items:center; }
+    #searchBox { padding:6px; border:1px solid #ccc; border-radius:4px; width:250px; }
+    #searchBtn { margin-left:5px; cursor:pointer; border:none; background:none; font-size:18px; }
+    .search-dropdown { position:absolute; top:38px; left:0; width:100%; background:white; border:1px solid #ccc; border-top:none; box-shadow:0 2px 8px rgba(0,0,0,0.15); display:none; z-index:1000; max-height:250px; overflow-y:auto; }
+    .search-item { display:flex; align-items:center; padding:6px 10px; cursor:pointer; }
+    .search-item img { width:35px; height:35px; object-fit:cover; border-radius:4px; margin-right:10px; }
+    .search-item:hover { background-color:#f1f1f1; }
+    .product-details { display: flex; gap: 30px; padding: 40px; background: #fff; margin: 20px; border-radius: 10px; }
+    .product-gallery img { width: 100%; max-width: 400px; border-radius: 8px; }
+    .product-info h2 { margin-bottom: 10px; }
+    .price { color: green; margin: 10px 0; }
+    .stock.in-stock { color: green; font-weight: bold; }
+    .stock.out-stock { color: red; font-weight: bold; }
+    .quantity { display: flex; align-items: center; margin-bottom: 15px; }
+    .quantity button { padding: 5px 10px; cursor: pointer; }
+    #qty { width: 40px; text-align: center; margin: 0 5px; }
+    .btn { padding: 10px 20px; margin-right: 10px; border: none; border-radius: 5px; cursor: pointer; }
+    .add-cart { background: #43a047; color: #fff; }
+    .wishlist { background: #eee; }
+    footer { background:#f1f1f1; padding:20px; display:flex; justify-content:space-around; flex-wrap:wrap; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header>
+  <nav class="navbar">
+    <div class="logo"><img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo"></div>
+    <ul class="nav-links">
+      <li><a href="{{ url_for('search_page') }}">Home</a></li>
+      <li><a href="{{ url_for('about') }}">About</a></li>
+      <li><a href="{{ url_for('delivery') }}">Delivery</a></li>
+      <li><a href="{{ url_for('contact') }}">Contact</a></li>
+    </ul>
+    <div class="search-bar">
+      <input type="text" id="searchBox" placeholder="Search for products...">
+      <button id="searchBtn">🔍</button>
+      <div id="searchDropdown" class="search-dropdown"></div>
+    </div>
+    <div class="icons">
+      <i class="fa-solid fa-bell"></i>
+      <i class="fa-solid fa-cart-shopping"></i>
+      <i class="fa-solid fa-user"></i>
+    </div>
+  </nav>
+</header>
+
+<!-- PRODUCT DETAILS -->
+<section class="product-details">
+  <div class="product-gallery">
+  
+<img src="{{ url_for('static', filename=product['image_url'].replace('static/', '')) }}" alt="{{ product['name'] }}">
+
+  </div>
+  <div class="product-info">
+    <h2>{{ product['name'] }}</h2>
+    <p><span class="stars">{{ product['rating'] }}</span> <small>({{ product['reviews'] }} reviews)</small></p>
+    <h3 class="price">Rs. {{ "%.2f"|format(product['price']) }}</h3>
+    <p class="stock {{ 'in-stock' if product['stock_status']=='In Stock' else 'out-stock' }}">
+      {{ '✅ In Stock' if product['stock_status']=='In Stock' else '❌ Out of Stock' }}
+    </p>
+    <p>{{ product['description'] }}</p>
+
+    <div class="quantity">
+      <button onclick="decreaseQty()">-</button>
+      <input type="text" id="qty" value="1" readonly>
+      <button onclick="increaseQty()">+</button>
+    </div>
+
+    <button class="btn add-cart"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+    <button class="btn wishlist"><i class="fa-regular fa-heart"></i> Wishlist</button>
+
+    <div class="info-box">
+      <h4>Product Information</h4>
+      <ul>
+        <li>Weight: {{ product['weight'] }}</li>
+        <li>Category: {{ product['category'] }}</li>
+        <li>Brand: {{ product['brand'] }}</li>
+        <li>Expiry: {{ product['expiry'] }}</li>
+        <li>Storage: {{ product['storage'] }}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Related Products -->
+<section class="related">
+  <h3>Related Products</h3>
+  <div class="related-grid">
+    {% for r in related %}
+    <div class="related-card">
+      <img src="{{ r['image_url'] }}" alt="{{ r['name'] }}">
+      <p>{{ r['name'] }}</p>
+      <span class="price">Rs. {{ "%.2f"|format(r['price']) }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <h3>Tesco Food City</h3>
+    <p>Crafting exceptional shopping experiences for our valued customers.</p>
+  </div>
+  <div>
+    <h3>Contact Us</h3>
+    <p>📍 380/F Leyland Junction, Panagoda Homagama</p>
+    <p>📞 0773659784</p>
+    <p>📧 TescoFoodCity@gmail.com</p>
+  </div>
+  <div>
+    <h3>Quick Links</h3>
+    <p>About</p>
+    <p>Privacy Policy</p>
+    <p>Return Policy</p>
+    <p>Shipping Info</p>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+function increaseQty() {
+    let qtyInput = document.getElementById('qty');
+    qtyInput.value = parseInt(qtyInput.value) + 1;
+}
+
+function decreaseQty() {
+    let qtyInput = document.getElementById('qty');
+    if (parseInt(qtyInput.value) > 1) {
+        qtyInput.value = parseInt(qtyInput.value) - 1;
+    }
+}
+
+// Add to Cart
+document.querySelector('.add-cart').addEventListener('click', function() {
+    const qty = parseInt(document.getElementById('qty').value);
+    const productId = "{{ product['id'] }}";
+    const productName = "{{ product['name'] }}";
+    const productPrice = "{{ product['price'] }}";
+
+    fetch("/add_to_cart", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: productId, name: productName, price: productPrice, qty: qty })
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);
+        window.location.href = "/cart";
+    })
+    .catch(err => alert("Error adding to cart: " + err));
+});
+</script>
+
+</body>
+</html>

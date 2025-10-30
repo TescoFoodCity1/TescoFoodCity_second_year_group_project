@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart - Tesco Food City</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #0f5132;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    header nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    header nav a:hover { text-decoration: underline; }
+
+    h1 { text-align: center; margin: 25px 0; color: #222; }
+
+    .cart-container {
+      width: 85%;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+    }
+
+    .cart-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .cart-item-details { flex: 1; margin-left: 15px; }
+    .cart-item h3 { margin: 0; font-size: 18px; }
+    .cart-item p { color: green; margin: 5px 0; font-weight: bold; }
+
+    .cart-item input[type="number"] { width: 50px; text-align: center; padding: 3px; }
+    .cart-item form button {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 5px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+    .cart-item form button:hover { background-color: #c82333; }
+
+    .total { text-align: right; font-size: 20px; font-weight: bold; margin-top: 20px; }
+    .checkout-btn { display: block; width: 100%; background-color: #4CAF50; color: white; padding: 12px; font-size: 16px; border: none; border-radius: 30px; margin-top: 20px; cursor: pointer; }
+    .checkout-btn:hover { background-color: #3e8e41; }
+
+    .suggested { margin-top: 40px; text-align: center; }
+    .suggested h2 { margin-bottom: 15px; }
+    .suggested-products { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .suggested-item { background: white; border: 1px solid #ddd; padding: 10px; border-radius: 10px; width: 150px; }
+    .suggested-item img { width: 100%; border-radius: 5px; }
+    .suggested-item p { margin: 8px 0; font-size: 14px; }
+
+    footer { background-color: #198754; color: white; padding: 30px 0; margin-top: 50px; }
+    footer .footer-container { display: flex; justify-content: space-around; flex-wrap: wrap; text-align: left; max-width: 1000px; margin: auto; }
+    footer h4 { margin-bottom: 10px; }
+    footer p, footer a { color: white; text-decoration: none; font-size: 14px; }
+    footer a:hover { text-decoration: underline; }
+    footer .bottom-text { text-align: center; margin-top: 20px; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h2>Tesco Food City</h2>
+  <nav>
+    <a href="{{ url_for('search_page') }}">Home</a>
+    <a href="#">About</a>
+    <a href="#">Delivery</a>
+    <a href="#">Products</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<h1>🛒 Your Cart</h1>
+
+<div class="cart-container">
+  {% if cart_items %}
+    {% for item in cart_items %}
+      <div class="cart-item">
+        <img src="{{ item.image_url }}" alt="{{ item.name }}">
+        <div class="cart-item-details">
+          <h3>{{ item.name }}</h3>
+          <p>Rs.{{ item.price * item.qty }}</p>
+        </div>
+        <div>
+          Qty: <input type="number" value="{{ item.qty }}" min="1">
+          <!-- Delete button -->
+   
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+    <div class="total">Total: Rs.{{ total }}</div>
+    <button class="checkout-btn">Proceed to Checkout</button>
+  {% else %}
+    <p>Your cart is empty.</p>
+  {% endif %}
+</div>
+
+<div class="suggested">
+  <h2>You May Also Like</h2>
+  <div class="suggested-products">
+    {% for suggested in suggested_items %}
+      <div class="suggested-item">
+        <img src="{{ suggested.image_url }}" alt="{{ suggested.name }}">
+        <p>{{ suggested.name }}</p>
+        <p>Rs.{{ suggested.price }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<footer>
+  <div class="footer-container">
+    <div>
+      <h4>Tesco Food City</h4>
+      <p>Crafting exceptional shopping experiences for our valued customers.</p>
+    </div>
+    <div>
+      <h4>Contact Us</h4>
+      <p>Tesco Food City, 88/9 Leyland Junction, Panagoda Homagama</p>
+      <p>📞 0773957165</p>
+      <p>✉️ TescoFoodCity@gmail.com</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <p><a href="#">Privacy Policy</a></p>
+      <p><a href="#">Terms of Service</a></p>
+      <p><a href="#">Shipping Info</a></p>
+    </div>
+  </div>
+  <p class="bottom-text">© 2025 Tesco Food City | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

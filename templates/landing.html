@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tesco Food City</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body, html { font-family:'Segoe UI', sans-serif; height:100%; overflow:hidden; }
+
+    #loader {
+      position: fixed;
+      top:0; left:0;
+      width:100vw; height:100vh;
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      transition: opacity 1s ease;
+    }
+
+    #loader img {
+      width:250px;
+      height:250px;
+      border-radius:50%;
+      object-fit:cover;
+      animation: logoPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes logoPulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="loader">
+  <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo">
+</div>
+
+
+  <script>
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+
+      // Keep loader for 4 seconds, then redirect
+       // Keep loader for 4 seconds, then redirect
+      setTimeout(() => {
+        loader.style.opacity = '0';
+        setTimeout(() => {
+          window.location.href = "{{ url_for('search_page') }}";
+
+        }, 1000); // fade-out duration
+      }, 4000); // display time
+    });
+  </script>
+</body>
+</html>

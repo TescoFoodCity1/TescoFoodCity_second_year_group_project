@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Tesco Food City</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* ====== BASIC RESET ====== */
+
+        :root {
+            --primary-green: #1acc31;
+            --light-green: #5eae5d;
+            --dark-green: #1b5e20;
+            --accent-green: #81c784;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+        }
+
+        /* Brand Logo */
+        .brand-logo {
+            width: 80px;
+            /* adjust size */
+            height: auto;
+        }
+
+        
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: #fff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #43a047;
+            /* green on hover */
+        }
+
+        .icons span {
+            margin-left: 15px;
+            cursor: pointer;
+        }
+
+        /* Icon Styling */
+        .icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .icons .icon {
+            font-size: 20px;
+            color: #333;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.2s ease, color 0.3s ease;
+        }
+
+        .icons .icon:hover {
+            color: #43a047;
+            /* green on hover */
+            transform: scale(1.2);
+        }
+
+        /* Example: notification badge */
+        .icons .icon .badge {
+            position: absolute;
+            top: -5px;
+            right: -8px;
+            background: red;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 5px;
+            border-radius: 50%;
+        }
+
+
+         /* Hero Section */
+         .hero-section {
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            color: white;
+            padding: 4rem 0;
+            margin: 2rem 0;
+            border-radius: 15px;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Mission & Vision Cards */
+        .mission-vision {
+            margin: 4rem 0;
+        }
+
+        .mission-card, .vision-card {
+            background: rgb(196, 193, 193);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(162, 45, 45, 0.1);
+            text-align: center;
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mission-card:hover, .vision-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            color:var(--dark-green);
+        }
+
+        .mission-card h3, .vision-card h3 {
+            color: whitesmoke;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        /* Key Features */
+        .features-section {
+            margin: 4rem 0;
+        }
+
+        .features-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 3rem;
+            font-weight: bold;
+        }
+
+        .feature-card {
+            background: var(--primary-green);
+            color: white;
+            border-radius: 10px;
+            padding: 2rem 1rem;
+            text-align: center;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(45, 134, 89, 0.3);
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card span {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Team Section */
+        .team-section {
+            margin: 4rem 0;
+            padding: 3rem 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .team-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #333;
+            border-bottom: 2px solid var(--primary-green);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .team-member-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-green);
+            border-radius: 100%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .team-member h5 {
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .team-footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: var(--primary-green);
+            color: white;
+            border-radius: 10px;
+        }
+
+
+        /* ====== FOOTER ====== */
+        footer {
+            background: #2e7d32;
+            color: white;
+            padding: 30px 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-content h3 {
+            margin-bottom: 10px;
+        }
+        /* ====== NAVBAR ====== */
+
+
+    </style>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ✅ HEADER / NAVBAR -->
+    <header>
+        <nav class="navbar">
+            <!-- Brand Logo on the top left corner -->
+            <div class="logo">
+              <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" height="50">
+                <!-- replace logo.png with your logo -->
+            </div>
+
+
+
+            <ul class="nav-links">
+
+                
+            </ul>
+
+            
+
+            <!-- Icons on right -->
+            <div class="icons">
+                <span class="icon"><i class="fa-solid fa-bell"></i></span> <!-- Notification -->
+                <span class="icon"><i class="fa-solid fa-cart-shopping"></i></span> <!-- Cart -->
+                <span class="icon"><i class="fa-solid fa-user"></i></span> <!-- Account -->
+            </div>
+
+
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Home Section -->
+        <div id="home-section" class="page-section">
+            <!-- Hero Section -->
+            <div class="hero-section text-center fade-in">
+                <h1 class="hero-title">About Tesco Food City Store System</h1>
+                <p class="hero-subtitle">A modern solution for online grocery shopping in Sri Lanka</p>
+            </div>
+
+            <!-- Mission & Vision -->
+            <div class="mission-vision">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="mission-card fade-in">
+                            <h3>Our Mission</h3>
+                            <p>To bring convenience to grocery shopping with secure payment, delivery tracking, and customer-friendly online services.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="vision-card fade-in">
+                            <h3>Our Vision</h3>
+                            <p>To become the most reliable and customer-friendly online grocery store in Sri Lanka.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Features -->
+            <div class="features-section">
+                <h2 class="features-title">Key Features</h2>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <div class="feature-card" onclick="showFeatureDetail('secure-payment')">
+                            <i class="fas fa-lock"></i>
+                            <span>Secure Payment</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="feature-card" onclick="showFeatureDetail('order-tracking')">
+                            <i class="fas fa-truck"></i>
+                            <span>Order Tracking</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="feature-card" onclick="showFeatureDetail('fresh-delivery')">
+                            <i class="fas fa-leaf"></i>
+                            <span>Fresh Delivery</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="feature-card" onclick="showFeatureDetail('easy-returns')">
+                            <i class="fas fa-undo"></i>
+                            <span>Easy Returns & Refunds</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div class="team-section">
+                <div class="container">
+                    <h2 class="team-title">Meet Our Team</h2>
+                    <div class="row">
+                        <div class="col-md-2 col-sm-4 col-6">
+                            <div class="team-member">
+                                <div class="team-member-avatar">WS</div>
+                                <h5>W.S.Kavindya</h5>
+                                <p>Developer</p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-6">
+                            <div class="team-member">
+                                <div class="team-member-avatar">MD</div>
+                                <h5>M.D.D.Perera</h5>
+                                <p>Developer</p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-6">
+                            <div class="team-member">
+                                <div class="team-member-avatar">PM</div>
+                                <h5>P.M.Wijayasekara</h5>
+                                <p>Developer</p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-6">
+                            <div class="team-member">
+                                <div class="team-member-avatar">UK</div>
+                                <h5>U.K.T.M.Silva</h5>
+                                <p>Developer</p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-6">
+                            <div class="team-member">
+                                <div class="team-member-avatar">NA</div>
+                                <h5>N.A.S.S.Devinda</h5>
+                                <p>Developer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-footer">
+                        <p><strong>Join thousands of Sri Lankans making grocery shopping easier everyday</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Section -->
+        <div id="products-section" class="page-section" style="display: none;">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="mb-4">Our Products</h2>
+                    <div class="row" id="product-list">
+                        <!-- Products will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form Section -->
+        <div id="contact-section" class="page-section" style="display: none;">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <h2 class="mb-4 text-center">Contact Us</h2>
+                    <form id="contact-form" class="bg-white p-4 rounded shadow">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name *</label>
+                            <input type="text" class="form-control" id="name" required>
+                            <div class="invalid-feedback">Please enter your name.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email *</label>
+                            <input type="email" class="form-control" id="email" required>
+                            <div class="invalid-feedback">Please enter a valid email.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea class="form-control" id="message" rows="4" required></textarea>
+                            <div class="invalid-feedback">Please enter your message.</div>
+                        </div>
+                        <button type="submit" class="btn btn-success">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- ✅ FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3>Tesco Food City</h3>
+                <p>Crafting exceptional shopping experiences for our valued customers.</p>
+            </div>
+            <div>
+                <h3>Contact Us</h3>
+                <p>📍 380/F Leyland Junction, Panagoda Homagama</p>
+                <p>📞 0773659784</p>
+                <p>📧 TescoFoodCity@gmail.com</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <p>About</p>
+                <p>Privacy Policy</p>
+                <p>Return Policy</p>
+                <p>Shipping Info</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+
+  document.querySelector('a[href="#contact"]').addEventListener('click', function (e) {
+      e.preventDefault(); // stop the default jump
+      // Hide other sections
+      document.querySelectorAll('.page-section').forEach(sec => sec.style.display = 'none');
+      // Show contact section
+      document.getElementById('contact-section').style.display = 'block';
+      // Smooth scroll into view
+      document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });
+  });
+  
+  
+  </script>
+</body>
+
+</html>

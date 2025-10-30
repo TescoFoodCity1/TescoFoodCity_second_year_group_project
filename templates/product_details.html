@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ product['name'] }} - Tesco Food City</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo"><h2>Tesco Food City</h2></div>
+</header>
+
+<section class="product-details">
+  <div class="product-gallery">
+    <img id="main-img" src="{{ product['image_url'] }}" alt="{{ product['name'] }}">
+  </div>
+
+  <div class="product-info">
+    <h2>{{ product['name'] }}</h2>
+    <p><span class="stars">{{ product['rating'] }}</span> <small>({{ product['reviews'] }} reviews)</small></p>
+    <h3 class="price">Rs. {{ "%.2f"|format(product['price']) }}</h3>
+    <p class="stock {{ 'in-stock' if product['stock_status']=='In Stock' else 'out-stock' }}">
+      {{ '✅ In Stock' if product['stock_status']=='In Stock' else '❌ Out of Stock' }}
+    </p>
+    <p>{{ product['description'] }}</p>
+
+    <div class="quantity">
+      <button onclick="decreaseQty()">-</button>
+      <input type="text" id="qty" value="1" readonly>
+      <button onclick="increaseQty()">+</button>
+    </div>
+
+    <button class="btn add-cart">Add to Cart</button>
+    <button class="btn wishlist">Wishlist</button>
+
+    <div class="info-box">
+      <h4>Product Information</h4>
+      <ul>
+        <li>Weight: {{ product['weight'] }}</li>
+        <li>Category: {{ product['category'] }}</li>
+        <li>Brand: {{ product['brand'] }}</li>
+        <li>Expiry: {{ product['expiry'] }}</li>
+        <li>Storage: {{ product['storage'] }}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="related">
+  <h3>Related Products</h3>
+  <div class="related-grid">
+    {% for r in related %}
+    <div class="related-card">
+      <img src="{{ r['image_url'] }}" alt="{{ r['name'] }}">
+      <p>{{ r['name'] }}</p>
+      <span class="price">Rs. {{ "%.2f"|format(r['price']) }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<script>
+function increaseQty() {
+  let qty = document.getElementById('qty');
+  qty.value = parseInt(qty.value) + 1;
+}
+function decreaseQty() {
+  let qty = document.getElementById('qty');
+  if (parseInt(qty.value) > 1) qty.value = parseInt(qty.value) - 1;
+}
+</script>
+
+</body>
+</html>

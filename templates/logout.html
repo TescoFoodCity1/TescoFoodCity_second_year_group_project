@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Out Confirmation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      background-color: #f0f8f4;
+      padding: 20px 0;
+    }
+
+    header nav ul {
+      display: flex;
+      justify-content: center;
+      list-style-type: none;
+    }
+
+    header nav ul li {
+      margin: 0 20px;
+    }
+
+    header nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .sign-out-box {
+      background: linear-gradient(135deg, #4cbb7f, #66cc99);
+      color: white;
+      padding: 40px;
+      text-align: center;
+      border-radius: 10px;
+      margin: 40px 0;
+    }
+
+    .sign-out-box h2 {
+      font-size: 24px;
+    }
+
+    .sign-out-box p {
+      margin: 20px 0;
+      font-size: 16px;
+    }
+
+    .buttons button {
+      background-color: #fff;
+      color: #4cbb7f;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .buttons button:hover {
+      background-color: #4cbb7f;
+      color: white;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-content .company-info {
+      flex: 1;
+    }
+
+    .footer-content .quick-links ul {
+      display: flex;
+      list-style-type: none;
+    }
+
+    .footer-content .quick-links ul li {
+      margin: 0 10px;
+    }
+
+    .footer-content .quick-links ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-content .quick-links ul li a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Delivery</a></li>
+          <li><a href="#">Product</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="sign-out-box">
+      <h2>Are You Sure You Want to Sign Out?</h2>
+      <p>You will need to log in again to access your account.</p>
+      <div class="buttons">
+        <button id="stay-logged-in">Stay Logged In</button>
+        <button id="sign-out">Sign Out</button>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="company-info">
+          <p><strong>Tesco Food City</strong></p>
+          <p>Crafting exceptional shopping experiences for our valued customers.</p>
+        </div>
+        <div class="quick-links">
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("stay-logged-in").addEventListener("click", function() {
+      alert("You are still logged in.");
+    });
+
+    document.getElementById("sign-out").addEventListener("click", function() {
+      alert("You have signed out.");
+    });
+  </script>
+
+</body>
+</html>

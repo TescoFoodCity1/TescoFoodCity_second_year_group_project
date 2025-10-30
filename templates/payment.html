@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Payment - Tesco Food City</title>
+<style>
+body { font-family: Arial, sans-serif; padding:20px; }
+h1 { color:#333; }
+button { padding:10px 20px; font-size:16px; background:#0071c5; color:white; border:none; cursor:pointer; }
+button:hover { background:#005a9c; }
+</style>
+</head>
+<body>
+<h1>💳 Payment</h1>
+<p>Total Amount: Rs.{{ total }}</p>
+
+<form method="POST">
+  <!-- Here you can add card/payment details -->
+  <button type="submit">Pay Now</button>
+</form>
+</body>
+</html>
