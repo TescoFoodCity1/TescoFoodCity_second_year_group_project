@@ -20,3 +20,13 @@ This project allows users to interact with a backend API for managing data and p
 ```bash
 git clone https://github.com/TescoFoodCity1/TescoFoodcityGroup_Project1.git
 cd TescoFoodcityGroup_Project1
+
+---
+
+## 🖼️ Screenshots
+
+### 🏠 Homepage
+![Homepage Screenshot](static/images/logo.png)
+
+### 🛒 Product Page
+![Product Screenshot](static/images/screenshot_products.png)
