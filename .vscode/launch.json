@@ -1,0 +1,14 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Open dashboard1.html",
+            "file": "c:\\Users\\Administrator\\OneDrive - The Open University of Sri Lanka\\Documents\\GitHub\\TescoFoodCity_second_year_group_project\\static\\dashboard1.html"
+        }
+    ]
+}
