@@ -64,10 +64,11 @@
 <!-- PRODUCT DETAILS -->
 <section class="product-details">
   <div class="product-gallery">
-  
-<img src="{{ url_for('static', filename=product['image_url'].replace('static/', '')) }}" alt="{{ product['name'] }}">
+    <!-- Directly use the image URL from the database -->
+  <img src="{{ url_for('static', filename=product['image_url']) }}" alt="{{ product['name'] }}" width="200">
 
   </div>
+
   <div class="product-info">
     <h2>{{ product['name'] }}</h2>
     <p><span class="stars">{{ product['rating'] }}</span> <small>({{ product['reviews'] }} reviews)</small></p>
@@ -98,6 +99,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- Related Products -->
 <section class="related">

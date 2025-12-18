@@ -471,41 +471,60 @@
             </div>
         </div>
     </section>
+<section class="products">
+    <h2>Popular Products</h2>
+    <div class="product-grid">
 
-    <!-- Products -->
-    <section class="products">
-        <h2>Popular Products</h2>
-        <div class="product-grid">
-
+        <a href="{{ url_for('product_detail', product_id=1) }}" class="product-link">
             <div class="product-card">
                 <img src="{{ url_for('static', filename='images/product/product1.jpg') }}">
                 <div class="product-name">Eva Cotton Feel</div>
                 <div class="product-price">Rs.300.00</div>
             </div>
+        </a>
 
+        <a href="{{ url_for('product_detail', product_id=2) }}" class="product-link">
             <div class="product-card">
                 <img src="{{ url_for('static', filename='images/product/product2.jpeg') }}">
                 <div class="product-name">Coca Cola 1.5L</div>
                 <div class="product-price">Rs.400.00</div>
             </div>
+        </a>
 
+        <a href="{{ url_for('product_detail', product_id=3) }}" class="product-link">
             <div class="product-card">
                 <img src="{{ url_for('static', filename='images/product/product3.jpeg') }}">
                 <div class="product-name">Carrot 500g</div>
                 <div class="product-price">Rs.160.00</div>
             </div>
+        </a>
 
+        <a href="{{ url_for('product_detail', product_id=4) }}" class="product-link">
             <div class="product-card">
                 <img src="{{ url_for('static', filename='images/product/product4.png') }}">
                 <div class="product-name">Oreo Biscuits</div>
                 <div class="product-price">Rs.250.00</div>
             </div>
+        </a>
 
+        <a href="{{ url_for('product_detail', product_id=5) }}" class="product-link">
             <div class="product-card">
                 <img src="{{ url_for('static', filename='images/product/Milk.png') }}">
                 <div class="product-name">Milk 1L</div>
                 <div class="product-price">Rs.200.00</div>
             </div>
+
+           <a href="{{ url_for('product_detail', product_id=2) }}" class="product-link">
+
+    <div class="product-card">
+        <img src="{{ url_for('static', filename='images/product/Milk.png') }}">
+        </a>
+
+        <div class="product-name">Milk 1L</div>
+        <div class="product-price">Rs.200.00</div>
+    </div>
+
+</a>
 
             <!-- New Products -->
             <div class="product-card">
