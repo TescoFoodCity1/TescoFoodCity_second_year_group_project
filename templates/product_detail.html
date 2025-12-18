@@ -108,6 +108,7 @@
     {% for r in related %}
     <div class="related-card">
       <img src="{{ r['image_url'] }}" alt="{{ r['name'] }}">
+      
       <p>{{ r['name'] }}</p>
       <span class="price">Rs. {{ "%.2f"|format(r['price']) }}</span>
     </div>
