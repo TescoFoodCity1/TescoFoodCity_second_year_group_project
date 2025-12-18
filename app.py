@@ -105,6 +105,8 @@ def add_to_cart():
     cart = session.get('cart', [])
 
     # Convert types
+
+    
     product_price = float(data['price'])
     product_qty = int(data['qty'])
 
@@ -124,6 +126,15 @@ def add_to_cart():
     session['cart'] = cart  # <-- This line is crucial
     session.modified = True  # <-- Make sure session updates
     return jsonify({'message': f"{data['name']} added to cart successfully!"})
+@app.route('/remove-from-cart', methods=['POST'])
+def remove_from_cart():
+    item_id = request.form.get('item_id')
+
+    cart = session.get('cart', [])
+    cart = [item for item in cart if str(item['id']) != str(item_id)]
+
+    session['cart'] = cart
+    return redirect(url_for('cart_page'))
 
 
 
