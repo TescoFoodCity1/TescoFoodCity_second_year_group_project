@@ -147,18 +147,6 @@ def checkout():
 
 @app.route('/cart')
 def cart_page():
-    total = sum(item['price'] * item['qty'] for item in cart_items)
-    return render_template("cart.html", cart_items=cart_items, total=total)
-
-
-
-
-
-
-
-
-@app.route('/cart')
-def cart_page():
     cart = session.get('cart', [])
     total = sum(float(item['price']) * int(item['qty']) for item in cart)
     return render_template('cart.html', cart_items=cart, total=total)
