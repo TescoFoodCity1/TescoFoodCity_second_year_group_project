@@ -251,8 +251,9 @@
         <span>Total</span>
         <span>Rs. {{ total }}</span>
     </div>
-
+<a href="{{ url_for('checkout') }}">
     <button class="checkout-btn">Proceed to Checkout</button>
+</a>
 </div>
 
 {% else %}

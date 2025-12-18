@@ -106,7 +106,7 @@ def add_to_cart():
 
     # Convert types
 
-    
+
     product_price = float(data['price'])
     product_qty = int(data['qty'])
 
@@ -135,6 +135,25 @@ def remove_from_cart():
 
     session['cart'] = cart
     return redirect(url_for('cart_page'))
+
+
+
+@app.route('/checkout')
+def checkout():
+    cart_items = session.get('cart', [])
+    total = sum(item['price'] * item['qty'] for item in cart_items)
+    return render_template('checkout.html', total=total)
+
+
+@app.route('/cart')
+def cart_page():
+    total = sum(item['price'] * item['qty'] for item in cart_items)
+    return render_template("cart.html", cart_items=cart_items, total=total)
+
+
+
+
+
 
 
 
