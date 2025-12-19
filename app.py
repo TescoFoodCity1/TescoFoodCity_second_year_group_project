@@ -325,10 +325,10 @@ def verify():
     return render_template("verify.html", email=email)
 
 
-
 @app.route('/category/beverages')
 def beverages():
     return render_template('beverages.html')
+
  
 @app.route('/category/daily-deals')
 def daily_deals():
