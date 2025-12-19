@@ -22,7 +22,7 @@ body { font-family: Arial, sans-serif; background: #f7f7f7; margin:0; padding:0;
 
 .toast { position:fixed; bottom:20px; right:20px; background:#333; color:#fff; padding:10px 20px; border-radius:5px; display:none; z-index:10000; }
 
-#notification-dropdown, #cart-dropdown, #wishlist-dropdown {
+#notification-dropdown, #wishlist-dropdown {
     display:none;
     position:absolute;
     top:50px;
@@ -36,21 +36,19 @@ body { font-family: Arial, sans-serif; background: #f7f7f7; margin:0; padding:0;
     z-index:1000;
 }
 
-#notification-dropdown ul, #cart-dropdown ul, #wishlist-dropdown ul {
+#notification-dropdown ul, #wishlist-dropdown ul {
     list-style:none;
     padding:0;
     margin:0;
 }
 
-#notification-dropdown ul li, #cart-dropdown ul li, #wishlist-dropdown ul li {
+#notification-dropdown ul li, #wishlist-dropdown ul li {
     padding:5px 0;
     border-bottom:1px solid #eee;
 }
 
-#cart-dropdown { right:90px; }
 #wishlist-dropdown { right:60px; }
 #notification-dropdown { right:120px; }
-
 </style>
 </head>
 <body>
@@ -70,7 +68,8 @@ body { font-family: Arial, sans-serif; background: #f7f7f7; margin:0; padding:0;
   </div>
   <div class="icons">
     <i class="fa-solid fa-bell" id="notification-icon" data-count="0"></i>
-    <i class="fa-solid fa-cart-shopping" id="cart-icon" data-count="0"></i>
+    <a href="{{ url_for('cart') }}"><i class="fa-solid fa-cart-shopping" id="cart-icon" data-count="0"></i></a>
+  
     <i class="fa-solid fa-user"></i>
   </div>
 
@@ -78,11 +77,6 @@ body { font-family: Arial, sans-serif; background: #f7f7f7; margin:0; padding:0;
   <div id="notification-dropdown">
     <h4>Notifications</h4>
     <ul id="notification-list"></ul>
-  </div>
-
-  <div id="cart-dropdown">
-    <h4>Cart</h4>
-    <ul id="cart-list"></ul>
   </div>
 
   <div id="wishlist-dropdown">
@@ -132,8 +126,8 @@ function showToast(message, duration=2000){
     setTimeout(()=>toast.style.display='none', duration);
 }
 
-// Notifications, Cart, Wishlist
-let notifications=[], cart=[], wishlist=[];
+// Notifications, Wishlist, Cart
+let notifications=[], wishlist=[], cart=[];
 
 function addNotification(message){
     notifications.push(message);
@@ -157,12 +151,11 @@ document.querySelector('.add-cart').addEventListener('click', function(){
         cart.push({name:productName, price:productPrice, qty:qty});
         document.getElementById('cart-icon').setAttribute('data-count', cart.length);
         addNotification(`Added ${productName} to cart.`);
-        updateCartDropdown();
     })
     .catch(err=>showToast("Error adding to cart!"));
 });
 
-// Add to Wishlist (via product button)
+// Add to Wishlist
 document.querySelector('.wishlist').addEventListener('click', function(){
     const productName="{{ product['name'] }}";
     const productPrice="{{ product['price'] }}";
@@ -182,16 +175,7 @@ document.querySelector('.wishlist').addEventListener('click', function(){
     .catch(err=>showToast("Error adding to wishlist!"));
 });
 
-// Update dropdowns
-function updateCartDropdown(){
-    const list=document.getElementById("cart-list");
-    list.innerHTML="";
-    cart.slice(-5).reverse().forEach(item=>{
-        const li=document.createElement("li");
-        li.innerHTML=`${item.name} x ${item.qty} - Rs.${item.price}`;
-        list.appendChild(li);
-    });
-}
+// Update Wishlist Dropdown
 function updateWishlistDropdown(){
     const list=document.getElementById("wishlist-list");
     list.innerHTML="";
@@ -202,7 +186,7 @@ function updateWishlistDropdown(){
     });
 }
 
-// Notification dropdown
+// Notification Dropdown
 document.getElementById('notification-icon').addEventListener('click', ()=>{
     const dropdown=document.getElementById('notification-dropdown');
     const list=document.getElementById('notification-list');
@@ -215,14 +199,8 @@ document.getElementById('notification-icon').addEventListener('click', ()=>{
     dropdown.style.display=dropdown.style.display==='none'?'block':'none';
 });
 
-// Cart dropdown
-document.getElementById('cart-icon').addEventListener('click', ()=>{
-    const dropdown=document.getElementById('cart-dropdown');
-    dropdown.style.display=dropdown.style.display==='none'?'block':'none';
-});
-
-// Wishlist dropdown toggle (triggered by product wishlist button)
-document.querySelector('.wishlist').addEventListener('dblclick', ()=>{
+// Wishlist Dropdown
+document.getElementById('wishlist-icon').addEventListener('click', ()=>{
     const dropdown=document.getElementById('wishlist-dropdown');
     dropdown.style.display=dropdown.style.display==='none'?'block':'none';
 });
@@ -233,11 +211,7 @@ document.addEventListener('click', function(event){
        !document.getElementById('notification-dropdown').contains(event.target))
         document.getElementById('notification-dropdown').style.display='none';
 
-    if(!document.getElementById('cart-icon').contains(event.target) &&
-       !document.getElementById('cart-dropdown').contains(event.target))
-        document.getElementById('cart-dropdown').style.display='none';
-
-    if(!document.querySelector('.wishlist').contains(event.target) &&
+    if(!document.getElementById('wishlist-icon').contains(event.target) &&
        !document.getElementById('wishlist-dropdown').contains(event.target))
         document.getElementById('wishlist-dropdown').style.display='none';
 });
