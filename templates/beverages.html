@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Beverages - Tesco Food City</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f7f7f7;
+    margin:0;
+    padding:0;
+}
+
+h1{
+    text-align:center;
+    padding:20px;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+.product-card{
+    background:#fff;
+    padding:10px;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    text-align:center;
+    transition:0.2s;
+}
+
+.product-card:hover{
+    transform:translateY(-5px);
+}
+
+.product-card img{
+    width:100%;
+    height:150px;
+    object-fit:contain;
+}
+
+.product-name{
+    font-size:14px;
+    margin:8px 0;
+}
+
+.product-price{
+    color:green;
+    font-weight:bold;
+}
+
+.product-link{
+    text-decoration:none;
+    color:inherit;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Beverages</h1>
+
+<div class="product-grid">
+
+<a href="{{ url_for('product_detail', product_id=1) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev1.png') }}">
+<div class="product-name">Coca Cola 1.5L</div>
+<div class="product-price">Rs.350.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=2) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev2.png') }}">
+<div class="product-name">Pepsi 1.5L</div>
+<div class="product-price">Rs.340.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=3) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev3.png') }}">
+<div class="product-name">Sprite 1.5L</div>
+<div class="product-price">Rs.330.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=4) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev4.png') }}">
+<div class="product-name">Fanta Orange</div>
+<div class="product-price">Rs.320.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=5) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev5.png') }}">
+<div class="product-name">Mountain Dew</div>
+<div class="product-price">Rs.310.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=6) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev6.png') }}">
+<div class="product-name">Red Bull</div>
+<div class="product-price">Rs.450.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=7) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev7.png') }}">
+<div class="product-name">Monster Energy</div>
+<div class="product-price">Rs.480.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=8) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev8.png') }}">
+<div class="product-name">Nescafe Ice Coffee</div>
+<div class="product-price">Rs.220.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=9) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev9.png') }}">
+<div class="product-name">Lipton Ice Tea</div>
+<div class="product-price">Rs.180.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=10) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev10.png') }}">
+<div class="product-name">Sunquick Orange</div>
+<div class="product-price">Rs.520.00</div>
+</div>
+</a>
+
+<!-- 11–20 -->
+
+<a href="{{ url_for('product_detail', product_id=i) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev' ~ i ~ '.png') }}">
+
+</div>
+</a>
+<a href="{{ url_for('product_detail', product_id=21) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev21.png') }}">
+<div class="product-name">Elephant House Cream Soda</div>
+<div class="product-price">Rs.300.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=22) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev22.png') }}">
+<div class="product-name">Elephant House Ginger Beer</div>
+<div class="product-price">Rs.310.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=23) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev23.png') }}">
+<div class="product-name">Kist Mango Juice</div>
+<div class="product-price">Rs.280.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=24) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev24.png') }}">
+<div class="product-name">Kist Mixed Fruit</div>
+<div class="product-price">Rs.290.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=25) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev25.png') }}">
+<div class="product-name">Nestlé Milo</div>
+<div class="product-price">Rs.360.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=26) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev26.png') }}">
+<div class="product-name">Anchor Chocolate Milk</div>
+<div class="product-price">Rs.240.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=27) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev27.png') }}">
+<div class="product-name">Sozo Ice Pop Drink</div>
+<div class="product-price">Rs.120.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=28) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev28.png') }}">
+<div class="product-name">MD Apple Juice</div>
+<div class="product-price">Rs.270.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=29) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/bev29.png') }}">
+<div class="product-name">Real Orange Juice</div>
+<div class="product-price">Rs.340.00</div>
+</div>
+</a>
+
+</div>
+
+</body>
+</html>
