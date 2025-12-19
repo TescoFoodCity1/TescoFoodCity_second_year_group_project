@@ -250,6 +250,7 @@ def product_detail(product_id):
 
 
 
+
 # Cart page  ✅ REQUIRED for url_for('cart')
 @app.route('/cart')
 def cart():
