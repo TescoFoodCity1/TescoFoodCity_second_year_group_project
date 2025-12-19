@@ -189,6 +189,18 @@ def product_detail(product_id):
     if not product:
         return "<h3>Product not found!</h3>", 404
     return render_template('product_detail.html', product=product)
+
+
+
+
+
+
+
+
+# Cart page  ✅ REQUIRED for url_for('cart')
+@app.route('/cart')
+def cart():
+    return render_template('cart.html')
     
 
 # -----------------------------
