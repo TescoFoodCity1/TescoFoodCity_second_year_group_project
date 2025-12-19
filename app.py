@@ -342,11 +342,6 @@ def frozen():
 def grocery():
     return render_template('grocery.html')
 
-@app.route('/category/beverages')
-def beverages():
-    return render_template('beverages.html')
-
-
 
 
 
