@@ -33,6 +33,7 @@
     .btn { padding: 10px 20px; margin-right: 10px; border: none; border-radius: 5px; cursor: pointer; }
     .add-cart { background: #43a047; color: #fff; }
     .wishlist { background: #eee; }
+    .toast { position:fixed; bottom:20px; right:20px; background:#333; color:#fff; padding:10px 20px; border-radius:5px; display:none; z-index:10000; }
     footer { background:#f1f1f1; padding:20px; display:flex; justify-content:space-around; flex-wrap:wrap; }
   </style>
 </head>
@@ -55,18 +56,24 @@
     </div>
     <div class="icons">
       <i class="fa-solid fa-bell"></i>
-      <i class="fa-solid fa-cart-shopping"></i>
+      <i class="fa-solid fa-cart-shopping" id="cart-icon" data-count="0"></i>
+      <i class="fa-regular fa-heart" id="wishlist-icon" data-count="0"></i>
       <i class="fa-solid fa-user"></i>
     </div>
+
+    <!-- Wishlist Dropdown -->
+    <div id="wishlist-dropdown" style="display:none; position:absolute; top:50px; right:60px; background:#fff; color:#000; width:250px; max-height:300px; overflow-y:auto; box-shadow: 0 2px 10px rgba(0,0,0,0.3); border-radius:8px; padding:10px; z-index:1000;">
+      <h4 style="margin:0 0 10px 0; font-size:16px;">Wishlist</h4>
+      <ul id="wishlist-list" style="list-style:none; padding:0; margin:0;"></ul>
+    </div>
+
   </nav>
 </header>
 
 <!-- PRODUCT DETAILS -->
 <section class="product-details">
   <div class="product-gallery">
-    <!-- Directly use the image URL from the database -->
-  <img src="{{ url_for('static', filename=product['image_url']) }}" alt="{{ product['name'] }}" width="200">
-
+    <img src="{{ url_for('static', filename=product['image_url']) }}" alt="{{ product['name'] }}" width="200">
   </div>
 
   <div class="product-info">
@@ -100,7 +107,6 @@
   </div>
 </section>
 
-
 <!-- Related Products -->
 <section class="related">
   <h3>Related Products</h3>
@@ -108,13 +114,15 @@
     {% for r in related %}
     <div class="related-card">
       <img src="{{ r['image_url'] }}" alt="{{ r['name'] }}">
-      
       <p>{{ r['name'] }}</p>
       <span class="price">Rs. {{ "%.2f"|format(r['price']) }}</span>
     </div>
     {% endfor %}
   </div>
 </section>
+
+<!-- Toast Notification -->
+<div id="toast" class="toast"></div>
 
 <!-- FOOTER -->
 <footer>
@@ -137,7 +145,6 @@
   </div>
 </footer>
 
-<!-- SCRIPTS -->
 <script>
 function increaseQty() {
     let qtyInput = document.getElementById('qty');
@@ -151,7 +158,15 @@ function decreaseQty() {
     }
 }
 
-// Add to Cart
+// Toast function
+function showToast(message, duration=2000) {
+    const toast = document.getElementById('toast');
+    toast.innerText = message;
+    toast.style.display = 'block';
+    setTimeout(() => toast.style.display = 'none', duration);
+}
+
+// CART
 document.querySelector('.add-cart').addEventListener('click', function() {
     const qty = parseInt(document.getElementById('qty').value);
     const productId = "{{ product['id'] }}";
@@ -165,10 +180,53 @@ document.querySelector('.add-cart').addEventListener('click', function() {
     })
     .then(res => res.json())
     .then(data => {
-        alert(data.message);
-       
+        showToast(data.message);
     })
-    .catch(err => alert("Error adding to cart: " + err));
+    .catch(err => showToast("Error adding to cart!"));
+});
+
+// WISHLIST
+let wishlist = [];
+
+document.querySelector('.wishlist').addEventListener('click', function() {
+    const productId = "{{ product['id'] }}";
+    const productName = "{{ product['name'] }}";
+
+    fetch("/add_to_wishlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: productId, name: productName })
+    })
+    .then(res => res.json())
+    .then(data => {
+        showToast(data.message);
+        wishlist.push(productName);
+        updateWishlistCount();
+        updateWishlistDropdown();
+    })
+    .catch(err => showToast("Error adding to wishlist!"));
+});
+
+function updateWishlistCount() {
+    document.getElementById('wishlist-icon').setAttribute('data-count', wishlist.length);
+}
+
+function updateWishlistDropdown() {
+    const list = document.getElementById("wishlist-list");
+    list.innerHTML = "";
+    wishlist.slice(-5).reverse().forEach(name => {
+        const li = document.createElement("li");
+        li.innerText = name;
+        li.style.padding = "5px 0";
+        li.style.borderBottom = "1px solid #eee";
+        list.appendChild(li);
+    });
+}
+
+// Toggle wishlist dropdown
+document.getElementById('wishlist-icon').addEventListener('click', () => {
+    const dropdown = document.getElementById('wishlist-dropdown');
+    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
 });
 </script>
 

@@ -125,7 +125,28 @@ def add_to_cart():
     return jsonify({'message': f"{product_name} added to cart successfully!"})
 
 
+@app.route('/add_to_wishlist', methods=['POST'])
+def add_to_wishlist():
+    data = request.get_json()
+    if not data:
+        return jsonify({'message': 'No data provided'}), 400
 
+    wishlist = session.get('wishlist', [])
+
+    product_id = int(data['id'])
+    product_name = data['name']
+
+    # Avoid duplicates
+    if not any(item['id'] == product_id for item in wishlist):
+        wishlist.append({
+            'id': product_id,
+            'name': product_name
+        })
+
+    session['wishlist'] = wishlist
+    session.modified = True
+
+    return jsonify({'message': f"{product_name} added to wishlist successfully!"})
 
 
 
