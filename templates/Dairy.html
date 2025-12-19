@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dairy - Daily Deals</title>
+<style>
+body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; }
+h1 { text-align:center; margin:20px 0; }
+.product-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:15px; padding:20px; }
+.product-card { background:#fff; border:1px solid #ddd; border-radius:8px; padding:10px; text-align:center; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+.product-card img { width:100%; height:150px; object-fit:cover; border-radius:5px; }
+.product-name { margin-top:10px; font-weight:bold; }
+.product-price { margin-top:5px; color:#0f5132; font-weight:bold; }
+</style>
+</head>
+<body>
+
+<h1>Dairy</h1>
+
+<div class="product-grid">
+
+<a href="{{ url_for('product_detail', product_id=301) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy1.png') }}">
+<div class="product-name">Anchor Milk 1L</div>
+<div class="product-price">Rs.350.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=302) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy2.png') }}">
+<div class="product-name">Nestlé Fresh Milk 1L</div>
+<div class="product-price">Rs.340.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=303) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy3.png') }}">
+<div class="product-name">Nido Milk Powder 400g</div>
+<div class="product-price">Rs.900.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=304) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy4.png') }}">
+<div class="product-name">Anchor Butter 200g</div>
+<div class="product-price">Rs.450.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=305) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy5.png') }}">
+<div class="product-name">Cheddar Cheese 250g</div>
+<div class="product-price">Rs.700.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=306) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy6.png') }}">
+<div class="product-name">Yogurt 500g</div>
+<div class="product-price">Rs.250.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=307) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy7.png') }}">
+<div class="product-name">Amul Paneer 250g</div>
+<div class="product-price">Rs.320.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=308) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy8.png') }}">
+<div class="product-name">Milkmaid Condensed Milk</div>
+<div class="product-price">Rs.400.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=309) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy9.png') }}">
+<div class="product-name">Cream 250ml</div>
+<div class="product-price">Rs.280.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=310) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy10.png') }}">
+<div class="product-name">Mozzarella Cheese 200g</div>
+<div class="product-price">Rs.600.00</div>
+</div>
+</a>
+
+<!-- 11–20 -->
+
+<a href="{{ url_for('product_detail', product_id=311) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy11.png') }}">
+<div class="product-name">Butter Milk 500ml</div>
+<div class="product-price">Rs.180.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=312) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy12.png') }}">
+<div class="product-name">Greek Yogurt 200g</div>
+<div class="product-price">Rs.350.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=313) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy13.png') }}">
+<div class="product-name">Cheese Slices 200g</div>
+<div class="product-price">Rs.380.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=314) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy14.png') }}">
+<div class="product-name">Fresh Cream 200ml</div>
+<div class="product-price">Rs.250.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=315) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy15.png') }}">
+<div class="product-name">Mozzarella Block 300g</div>
+<div class="product-price">Rs.650.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=316) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy16.png') }}">
+<div class="product-name">Cow Ghee 500ml</div>
+<div class="product-price">Rs.750.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=317) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy17.png') }}">
+<div class="product-name">Cheese Cubes 250g</div>
+<div class="product-price">Rs.450.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=318) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy18.png') }}">
+<div class="product-name">Flavored Yogurt 200g</div>
+<div class="product-price">Rs.220.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=319) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy19.png') }}">
+<div class="product-name">Cow Milk 2L</div>
+<div class="product-price">Rs.680.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=320) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/dairy20.png') }}">
+<div class="product-name">Probiotic Yogurt 200g</div>
+<div class="product-price">Rs.300.00</div>
+</div>
+</a>
+
+</div>
+</body>
+</html>
