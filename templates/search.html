@@ -454,15 +454,6 @@
    <section class="categories">
     <h2>Categories</h2>
     <div class="category-list">
-<a href="{{ url_for('beverages') }}">
-    <div class="cat-item">
-        <img src="{{ url_for('static', filename='images/categories/beverages.jpg') }}" alt="Beverages">
-        <p>Beverages</p>
-    </div>
-</a>
-
-            </div>
-       
         <a href="{{ url_for('daily_deals') }}" class="category-link">
             <div class="cat-item">
                 <img src="{{ url_for('static', filename='images/categories/dailydeals.jpeg') }}" alt="Daily Deals">
@@ -497,7 +488,13 @@
 
                 <p>Grocery</p>
             </div>
-      
+      <a href="{{ url_for('beverages') }}">
+    <div class="cat-item">
+        <img src="{{ url_for('static', filename='images/categories/beverages.jpg') }}" alt="Beverages"></div></a>
+        <p>Beverages</p>
+    </div>
+
+
 
     </div>
 </section>

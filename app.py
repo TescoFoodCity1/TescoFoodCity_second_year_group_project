@@ -325,11 +325,7 @@ def verify():
     return render_template("verify.html", email=email)
 
 
-@app.route('/category/beverages')
-def beverages():
-    return render_template('beverages.html')
 
- 
 @app.route('/category/daily-deals')
 def daily_deals():
     return render_template('dailydeals.html')
@@ -345,6 +341,12 @@ def frozen():
 @app.route('/category/grocery')
 def grocery():
     return render_template('grocery.html')
+
+@app.route('/category/beverages')
+def beverages():
+    return render_template('beverages.html')
+
+
 
 
 
