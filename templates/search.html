@@ -452,29 +452,49 @@
     </section>
 
     <!-- Categories -->
-    <section class="categories">
-        <h2>Categories</h2>
-        <div class="category-list">
-            <div class="cat-item"><img src="{{ url_for('static', filename='images/categories/beverages.jpg') }}" alt="Beverages">
+<section class="categories">
+    <h2>Categories</h2>
+    <div class="category-list">
+        <div class="cat-item">
+            <a href="{{ url_for('', category='beverages') }}">
+                <img src="{{ url_for('static', filename='images/categories/beverages.jpg') }}" alt="Beverages">
                 <p>Beverages</p>
-            </div>
-            <div class="cat-item"><img src="{{ url_for('static', filename='images/categories/bakery.jpg') }}" alt="Bakery">
-                <p>Bakery</p>
-            </div>
-            <div class="cat-item"><img src="{{ url_for('static', filename='images/categories/dailydeals.jpeg') }}" alt="Daily Deals">
-                <p>Daily Deals</p>
-            </div>
-            <div class="cat-item"><img src="{{ url_for('static', filename='images/categories/dairy.jpg') }}" alt="Dairy">
-                <p>Dairy</p>
-            </div>
-            <div class="cat-item"><img src="{{ url_for('static', filename='images/categories/frozen.jpeg') }}" alt="Frozen">
-                <p>Frozen</p>
-            </div>
-            <div class="cat-item"><img src="{{ url_for('static', filename='images/categories/grocery.jpg') }}" alt="Grocery">
-                <p>Grocery</p>
-            </div>
+            </a>
         </div>
-    </section>
+        <div class="cat-item">
+            <a href="{{ url_for('', category='bakery') }}">
+                <img src="{{ url_for('static', filename='images/categories/bakery.jpg') }}" alt="Bakery">
+                <p>Bakery</p>
+            </a>
+        </div>
+        <div class="cat-item">
+            <a href="{{ url_for('', category='dailydeals') }}">
+                <img src="{{ url_for('static', filename='images/categories/dailydeals.jpeg') }}" alt="Daily Deals">
+                <p>Daily Deals</p>
+            </a>
+        </div>
+        <div class="cat-item">
+            <a href="{{ url_for('', category='dairy') }}">
+                <img src="{{ url_for('static', filename='images/categories/dairy.jpg') }}" alt="Dairy">
+                <p>Dairy</p>
+            </a>
+        </div>
+        <div class="cat-item">
+            <a href="{{ url_for('', category='frozen') }}">
+                <img src="{{ url_for('static', filename='images/categories/frozen.jpeg') }}" alt="Frozen">
+                <p>Frozen</p>
+            </a>
+        </div>
+        <div class="cat-item">
+            <a href="{{ url_for('', category='grocery') }}">
+                <img src="{{ url_for('static', filename='images/categories/grocery.jpg') }}" alt="Grocery">
+                <p>Grocery</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+       
 <section class="products">
     <h2>Popular Products</h2>
     <div class="product-grid">
