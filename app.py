@@ -93,9 +93,6 @@ def search_page():
     return render_template('search.html', username=username)
 
 
-
-
-
 @app.route('/add_to_cart', methods=['POST'])
 def add_to_cart():
     data = request.get_json()
@@ -104,28 +101,68 @@ def add_to_cart():
 
     cart = session.get('cart', [])
 
-    # Convert types
-
-
-    product_price = float(data['price'])
+    product_id = int(data['id'])
     product_qty = int(data['qty'])
+    product_name = data['name']
+    product_price = float(data['price'])
 
     # Check if product already in cart
     for item in cart:
-        if item['id'] == data['id']:
+        if item['id'] == product_id:
             item['qty'] += product_qty
             break
     else:
         cart.append({
-            'id': data['id'],
-            'name': data['name'],
+            'id': product_id,
+            'name': product_name,
             'price': product_price,
             'qty': product_qty
         })
 
-    session['cart'] = cart  # <-- This line is crucial
-    session.modified = True  # <-- Make sure session updates
-    return jsonify({'message': f"{data['name']} added to cart successfully!"})
+    session['cart'] = cart
+    session.modified = True
+
+    return jsonify({'message': f"{product_name} added to cart successfully!"})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @app.route('/remove-from-cart', methods=['POST'])
 def remove_from_cart():
     item_id = request.form.get('item_id')

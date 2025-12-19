@@ -166,7 +166,7 @@ document.querySelector('.add-cart').addEventListener('click', function() {
     .then(res => res.json())
     .then(data => {
         alert(data.message);
-        window.location.href = "/cart";
+       
     })
     .catch(err => alert("Error adding to cart: " + err));
 });
