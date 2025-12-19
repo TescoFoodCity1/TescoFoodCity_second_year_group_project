@@ -326,11 +326,10 @@ def verify():
 
 
 
-
-@app.route('/category/bakery')
-def bakery():
+@app.route('/category/beverages')
+def beverages():
     return render_template('beverages.html')
-
+ 
 @app.route('/category/daily-deals')
 def daily_deals():
     return render_template('dailydeals.html')
