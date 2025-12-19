@@ -248,39 +248,6 @@ def product_detail(product_id):
         return "<h3>Product not found!</h3>", 404
     return render_template('product_detail.html', product=product)
 
-# Beverages page
-@app.route('/beverages')
-def beverages():
-    return render_template('beverages.html')
-
-# Bakery page
-@app.route('/bakery')
-def bakery():
-    return render_template('bakery.html')
-
-# Daily Deals page
-@app.route('/dailydeals')
-def dailydeals():
-    return render_template('dailydeals.html')
-
-# Dairy page
-@app.route('/Dairy')
-def dairy():
-    return render_template('Dairy.html')
-
-# Frozen page
-@app.route('/frozenPage')
-def frozenPage():
-    return render_template('frozenPage.html')
-
-# Grocery page
-@app.route('/grocery')
-def grocery():
-    return render_template('grocery.html')
-
-
-
-
 
 
 # Cart page  ✅ REQUIRED for url_for('cart')
