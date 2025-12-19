@@ -8,6 +8,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
 body { font-family: Arial, sans-serif; background: #f7f7f7; margin:0; padding:0; }
+
 .navbar { display:flex; justify-content:space-between; align-items:center; padding:10px 20px; background:#f8f9fa; border-bottom:1px solid #ddd; position:relative; }
 .logo img { height:50px; }
 .nav-links { list-style:none; display:flex; gap:20px; margin:0; padding:0; }
@@ -16,9 +17,26 @@ body { font-family: Arial, sans-serif; background: #f7f7f7; margin:0; padding:0;
 .search-bar { position:relative; display:flex; align-items:center; }
 #searchBox { padding:6px; border:1px solid #ccc; border-radius:4px; width:250px; }
 #searchBtn { margin-left:5px; cursor:pointer; border:none; background:none; font-size:18px; }
+
 .icons { display:flex; gap:15px; align-items:center; position:relative; }
 .icons i { cursor:pointer; position:relative; }
-.icons i::after { content: attr(data-count); position:absolute; top:-8px; right:-8px; background:red; color:white; font-size:12px; width:18px; height:18px; display:flex; justify-content:center; align-items:center; border-radius:50%; }
+
+/* Red badge for all icons except user/account */
+.icons i:not(.user-icon)::after { 
+    content: attr(data-count); 
+    position:absolute; 
+    top:-8px; 
+    right:-8px; 
+    background:red; 
+    color:white; 
+    font-size:12px; 
+    width:18px; 
+    height:18px; 
+    display:flex; 
+    justify-content:center; 
+    align-items:center; 
+    border-radius:50%; 
+}
 
 .toast { position:fixed; bottom:20px; right:20px; background:#333; color:#fff; padding:10px 20px; border-radius:5px; display:none; z-index:10000; }
 
@@ -49,6 +67,14 @@ body { font-family: Arial, sans-serif; background: #f7f7f7; margin:0; padding:0;
 
 #wishlist-dropdown { right:60px; }
 #notification-dropdown { right:120px; }
+
+.product-details { display:flex; gap:20px; padding:20px; background:#fff; margin:20px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+.product-gallery img { border-radius:8px; }
+.product-info { max-width:400px; }
+.quantity { display:flex; gap:5px; margin:10px 0; }
+.quantity input { width:50px; text-align:center; }
+.btn { padding:8px 12px; margin-right:10px; cursor:pointer; border:none; border-radius:4px; background:#155724; color:white; }
+.btn.wishlist { background:#f44336; }
 </style>
 </head>
 <body>
@@ -69,8 +95,7 @@ body { font-family: Arial, sans-serif; background: #f7f7f7; margin:0; padding:0;
   <div class="icons">
     <i class="fa-solid fa-bell" id="notification-icon" data-count="0"></i>
     <a href="{{ url_for('cart') }}"><i class="fa-solid fa-cart-shopping" id="cart-icon" data-count="0"></i></a>
-  
-    <i class="fa-solid fa-user"></i>
+    <i class="fa-solid fa-user user-icon"></i>
   </div>
 
   <!-- Dropdowns -->
@@ -87,28 +112,41 @@ body { font-family: Arial, sans-serif; background: #f7f7f7; margin:0; padding:0;
 </nav>
 </header>
 
+<!-- PRODUCT DETAILS -->
 <section class="product-details">
-<div class="product-gallery">
-<img src="{{ url_for('static', filename=product['image_url']) }}" alt="{{ product['name'] }}" width="200">
-</div>
-<div class="product-info">
-<h2>{{ product['name'] }}</h2>
-<p><span class="stars">{{ product['rating'] }}</span> <small>({{ product['reviews'] }} reviews)</small></p>
-<h3 class="price">Rs. {{ "%.2f"|format(product['price']) }}</h3>
-<p class="stock {{ 'in-stock' if product['stock_status']=='In Stock' else 'out-stock' }}">
-{{ '✅ In Stock' if product['stock_status']=='In Stock' else '❌ Out of Stock' }}</p>
-<p>{{ product['description'] }}</p>
+  <div class="product-gallery">
+    <img src="{{ url_for('static', filename=product['image_url']) }}" alt="{{ product['name'] }}" width="200">
+  </div>
 
-<div class="quantity">
-  <button onclick="decreaseQty()">-</button>
-  <input type="text" id="qty" value="1" readonly>
-  <button onclick="increaseQty()">+</button>
-</div>
+  <div class="product-info">
+    <h2>{{ product['name'] }}</h2>
+    <p><span class="stars">{{ product['rating'] }}</span> <small>({{ product['reviews'] }} reviews)</small></p>
+    <h3 class="price">Rs. {{ "%.2f"|format(product['price']) }}</h3>
+    <p class="stock {{ 'in-stock' if product['stock_status']=='In Stock' else 'out-stock' }}">
+      {{ '✅ In Stock' if product['stock_status']=='In Stock' else '❌ Out of Stock' }}
+    </p>
+    <p>{{ product['description'] }}</p>
 
-<button class="btn add-cart"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
-<button class="btn wishlist"><i class="fa-regular fa-heart"></i> Add to Wishlist</button>
+    <div class="quantity">
+      <button onclick="decreaseQty()">-</button>
+      <input type="text" id="qty" value="1" readonly>
+      <button onclick="increaseQty()">+</button>
+    </div>
 
-</div>
+    <button class="btn add-cart"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+    <button class="btn wishlist"><i class="fa-regular fa-heart"></i> Wishlist</button>
+
+    <div class="info-box">
+      <h4>Product Information</h4>
+      <ul>
+        <li>Weight: {{ product['weight'] }}</li>
+        <li>Category: {{ product['category'] }}</li>
+        <li>Brand: {{ product['brand'] }}</li>
+        <li>Expiry: {{ product['expiry'] }}</li>
+        <li>Storage: {{ product['storage'] }}</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <div id="toast" class="toast"></div>
@@ -199,20 +237,13 @@ document.getElementById('notification-icon').addEventListener('click', ()=>{
     dropdown.style.display=dropdown.style.display==='none'?'block':'none';
 });
 
-// Wishlist Dropdown
-document.getElementById('wishlist-icon').addEventListener('click', ()=>{
-    const dropdown=document.getElementById('wishlist-dropdown');
-    dropdown.style.display=dropdown.style.display==='none'?'block':'none';
-});
-
 // Click outside to close dropdowns
 document.addEventListener('click', function(event){
     if(!document.getElementById('notification-icon').contains(event.target) &&
        !document.getElementById('notification-dropdown').contains(event.target))
         document.getElementById('notification-dropdown').style.display='none';
 
-    if(!document.getElementById('wishlist-icon').contains(event.target) &&
-       !document.getElementById('wishlist-dropdown').contains(event.target))
+    if(!document.getElementById('wishlist-dropdown').contains(event.target))
         document.getElementById('wishlist-dropdown').style.display='none';
 });
 </script>
