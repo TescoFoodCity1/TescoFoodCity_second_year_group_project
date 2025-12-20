@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Grocery Products</title>
+<title>Frozen Products</title>
 <style>
 body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; }
 h1 { text-align:center; margin:20px 0; }
@@ -15,169 +15,169 @@ h1 { text-align:center; margin:20px 0; }
 </head>
 <body>
 
-<h1>Grocery</h1>
+<h1>Frozen</h1>
 
 <div class="product-grid">
 
-<a href="{{ url_for('product_detail', product_id=501) }}" class="product-link">
+<a href="{{ url_for('product_detail', product_id=401) }}" class="product-link">
 <div class="product-card">
-<img src="{{ url_for('static', filename='images/product/image.png') }}">
-<div class="product-name">Rice 5kg</div>
-<div class="product-price">Rs.1200.00</div>
+<img src="{{ url_for('static', filename='images/product/frozen1.png') }}">
+<div class="product-name">Frozen Peas 500g</div>
+<div class="product-price">Rs.300.00</div>
+</div>
+
+
+<a href="{{ url_for('product_detail', product_id=402) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/frozen2.png') }}">
+<div class="product-name">Frozen Corn 500g</div>
+<div class="product-price">Rs.320.00</div>
 </div>
 </a>
 
-<a href="{{ url_for('product_detail', product_id=502) }}" class="product-link">
+<a href="{{ url_for('product_detail', product_id=403) }}" class="product-link">
 <div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery2.png') }}">
-<div class="product-name">Flour 2kg</div>
-<div class="product-price">Rs.400.00</div>
-</div>
-</a>
-
-<a href="{{ url_for('product_detail', product_id=503) }}" class="product-link">
-<div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery3.png') }}">
-<div class="product-name">Sugar 2kg</div>
-<div class="product-price">Rs.450.00</div>
-</div>
-</a>
-
-<a href="{{ url_for('product_detail', product_id=504) }}" class="product-link">
-<div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery4.png') }}">
-<div class="product-name">Salt 1kg</div>
-<div class="product-price">Rs.120.00</div>
-</div>
-</a>
-
-<a href="{{ url_for('product_detail', product_id=505) }}" class="product-link">
-<div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery5.png') }}">
-<div class="product-name">Cooking Oil 1L</div>
-<div class="product-price">Rs.900.00</div>
-</div>
-</a>
-
-<a href="{{ url_for('product_detail', product_id=506) }}" class="product-link">
-<div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery6.png') }}">
-<div class="product-name">Lentils 1kg</div>
-<div class="product-price">Rs.600.00</div>
-</div>
-</a>
-
-<a href="{{ url_for('product_detail', product_id=507) }}" class="product-link">
-<div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery7.png') }}">
-<div class="product-name">Chili Powder 250g</div>
-<div class="product-price">Rs.250.00</div>
-</div>
-</a>
-
-<a href="{{ url_for('product_detail', product_id=508) }}" class="product-link">
-<div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery8.png') }}">
-<div class="product-name">Turmeric Powder 250g</div>
-<div class="product-price">Rs.200.00</div>
-</div>
-</a>
-
-<a href="{{ url_for('product_detail', product_id=509) }}" class="product-link">
-<div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery9.png') }}">
-<div class="product-name">Coconut Milk 400ml</div>
+<img src="{{ url_for('static', filename='images/product/frozen3.png') }}">
+<div class="product-name">Frozen Mixed Veg 500g</div>
 <div class="product-price">Rs.350.00</div>
 </div>
 </a>
 
-<a href="{{ url_for('product_detail', product_id=510) }}" class="product-link">
+<a href="{{ url_for('product_detail', product_id=404) }}" class="product-link">
 <div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery10.png') }}">
-<div class="product-name">Tomato Paste 200g</div>
-<div class="product-price">Rs.180.00</div>
+<img src="{{ url_for('static', filename='images/product/frozen4.png') }}">
+<div class="product-name">Frozen Broccoli 500g</div>
+<div class="product-price">Rs.400.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=405) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/frozen5.png') }}">
+<div class="product-name">Frozen Spinach 500g</div>
+<div class="product-price">Rs.280.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=406) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/frozen6.png') }}">
+<div class="product-name">Frozen Chicken Nuggets 500g</div>
+<div class="product-price">Rs.800.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=407) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/frozen7.png') }}">
+<div class="product-name">Frozen Fish Fillet 500g</div>
+<div class="product-price">Rs.950.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=408) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/frozen8.png') }}">
+<div class="product-name">Frozen Shrimp 500g</div>
+<div class="product-price">Rs.1200.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=409) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/frozen9.png') }}">
+<div class="product-name">Frozen French Fries 1kg</div>
+<div class="product-price">Rs.550.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=410) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/frozen10.png') }}">
+<div class="product-name">Frozen Waffles 250g</div>
+<div class="product-price">Rs.380.00</div>
 </div>
 </a>
 
 <!-- 11–20 -->
 
-<a href="{{ url_for('product_detail', product_id=511) }}" class="product-link">
+<a href="{{ url_for('product_detail', product_id=411) }}" class="product-link">
 <div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery11.png') }}">
-<div class="product-name">Soy Sauce 250ml</div>
-<div class="product-price">Rs.400.00</div>
-</div>
-</a>
-
-<a href="{{ url_for('product_detail', product_id=512) }}" class="product-link">
-<div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery12.png') }}">
-<div class="product-name">Vinegar 500ml</div>
-<div class="product-price">Rs.350.00</div>
-</div>
-</a>
-
-<a href="{{ url_for('product_detail', product_id=513) }}" class="product-link">
-<div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery13.png') }}">
-<div class="product-name">Pasta 500g</div>
-<div class="product-price">Rs.550.00</div>
-</div>
-</a>
-
-<a href="{{ url_for('product_detail', product_id=514) }}" class="product-link">
-<div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery14.png') }}">
-<div class="product-name">Macaroni 500g</div>
-<div class="product-price">Rs.520.00</div>
-</div>
-</a>
-
-<a href="{{ url_for('product_detail', product_id=515) }}" class="product-link">
-<div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery15.png') }}">
-<div class="product-name">Tea Leaves 250g</div>
-<div class="product-price">Rs.600.00</div>
-</div>
-</a>
-
-<a href="{{ url_for('product_detail', product_id=516) }}" class="product-link">
-<div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery16.png') }}">
-<div class="product-name">Coffee Powder 200g</div>
-<div class="product-price">Rs.550.00</div>
-</div>
-</a>
-
-<a href="{{ url_for('product_detail', product_id=517) }}" class="product-link">
-<div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery17.png') }}">
-<div class="product-name">Breakfast Cereal 500g</div>
-<div class="product-price">Rs.900.00</div>
-</div>
-</a>
-
-<a href="{{ url_for('product_detail', product_id=518) }}" class="product-link">
-<div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery18.png') }}">
-<div class="product-name">Jam 250g</div>
-<div class="product-price">Rs.450.00</div>
-</div>
-</a>
-
-<a href="{{ url_for('product_detail', product_id=519) }}" class="product-link">
-<div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery19.png') }}">
-<div class="product-name">Honey 250g</div>
+<img src="{{ url_for('static', filename='images/product/frozen11.png') }}">
+<div class="product-name">Frozen Pizza 400g</div>
 <div class="product-price">Rs.700.00</div>
 </div>
 </a>
 
-<a href="{{ url_for('product_detail', product_id=520) }}" class="product-link">
+<a href="{{ url_for('product_detail', product_id=412) }}" class="product-link">
 <div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery20.png') }}">
-<div class="product-name">Peanut Butter 250g</div>
-<div class="product-price">Rs.650.00</div>
+<img src="{{ url_for('static', filename='images/product/frozen12.png') }}">
+<div class="product-name">Frozen Lasagna 500g</div>
+<div class="product-price">Rs.900.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=413) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/frozen13.png') }}">
+<div class="product-name">Frozen Spring Rolls 250g</div>
+<div class="product-price">Rs.450.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=414) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/frozen14.png') }}">
+<div class="product-name">Frozen Chicken Wings 500g</div>
+<div class="product-price">Rs.850.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=415) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/frozen15.png') }}">
+<div class="product-name">Frozen Garlic Bread 250g</div>
+<div class="product-price">Rs.300.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=416) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/frozen16.png') }}">
+<div class="product-name">Frozen Mixed Berries 300g</div>
+<div class="product-price">Rs.600.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=417) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/frozen17.png') }}">
+<div class="product-name">Frozen Mango Cubes 300g</div>
+<div class="product-price">Rs.450.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=418) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/frozen18.png') }}">
+<div class="product-name">Frozen Okra 500g</div>
+<div class="product-price">Rs.400.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=419) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/frozen19.png') }}">
+<div class="product-name">Frozen Spinach Cubes 250g</div>
+<div class="product-price">Rs.280.00</div>
+</div>
+</a>
+
+<a href="{{ url_for('product_detail', product_id=420) }}" class="product-link">
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/product/frozen20.png') }}">
+<div class="product-name">Frozen Chicken Patties 400g</div>
+<div class="product-price">Rs.750.00</div>
 </div>
 </a>
 
