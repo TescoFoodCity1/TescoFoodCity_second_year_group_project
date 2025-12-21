@@ -242,11 +242,20 @@ def search_products():
 
 @app.route('/product/<int:product_id>')
 def product_detail(product_id):
-    cursor.execute("SELECT * FROM products WHERE id=%s", (product_id,))
+    cursor.execute(
+        "SELECT * FROM products WHERE id = %s",
+        (product_id,)
+    )
     product = cursor.fetchone()
-    if not product:
+
+    if product is None:
         return "<h3>Product not found!</h3>", 404
-    return render_template('product_detail.html', product=product)
+
+    return render_template(
+        'product_detail.html',
+        product=product
+    )
+
 
 
 
