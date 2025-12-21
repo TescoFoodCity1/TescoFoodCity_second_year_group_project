@@ -3,10 +3,8 @@ import random
 import string
 import secrets
 from datetime import datetime, timedelta
-from flask import Flask, jsonify, redirect, url_for, session, request, render_template, flash
-from requests_oauthlib import OAuth2Session
+from flask import Flask, jsonify, redirect, url_for, session, request, render_template
 import mysql.connector
-from dotenv import load_dotenv
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 from werkzeug.security import generate_password_hash, check_password_hash

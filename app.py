@@ -243,7 +243,9 @@ def search_products():
 @app.route('/product/<int:product_id>')
 def product_detail(product_id):
     cursor.execute(
-        "SELECT * FROM products WHERE id = %s",
+        
+        
+              "SELECT * FROM products WHERE id = %s",
         (product_id,)
     )
     product = cursor.fetchone()
