@@ -4,13 +4,28 @@
 <meta charset="UTF-8">
 <title>Grocery Products</title>
 <style>
-body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; }
-h1 { text-align:center; margin:20px 0; }
+body { 
+    font-family: Arial, sans-serif; 
+    margin:0; 
+    padding:0; 
+    background:#f9f9f9; 
+}
+
+h1 { 
+    text-align:center; 
+    margin:20px 0; 
+}
+
 .product-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:15px; padding:20px; }
 .product-card { background:#fff; border:1px solid #ddd; border-radius:8px; padding:10px; text-align:center; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
 .product-card img { width:100%; height:150px; object-fit:cover; border-radius:5px; }
 .product-name { margin-top:10px; font-weight:bold; }
 .product-price { margin-top:5px; color:#0f5132; font-weight:bold; }
+
+.product-link{
+    text-decoration:none;
+    color:inherit;
+}
 </style>
 </head>
 <body>
@@ -29,7 +44,7 @@ h1 { text-align:center; margin:20px 0; }
 
 <a href="{{ url_for('product_detail', product_id=502) }}" class="product-link">
 <div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery2.png') }}">
+<img src="{{ url_for('static', filename='images/product/flour.jpg') }}">
 <div class="product-name">Flour 2kg</div>
 <div class="product-price">Rs.400.00</div>
 </div>
@@ -37,15 +52,15 @@ h1 { text-align:center; margin:20px 0; }
 
 <a href="{{ url_for('product_detail', product_id=503) }}" class="product-link">
 <div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery3.png') }}">
-<div class="product-name">Sugar 2kg</div>
-<div class="product-price">Rs.450.00</div>
+<img src="{{ url_for('static', filename='images/product/sugar.jpeg') }}">
+<div class="product-name">Sugar 1kg</div>
+<div class="product-price">Rs.295.00</div>
 </div>
 </a>
 
 <a href="{{ url_for('product_detail', product_id=504) }}" class="product-link">
 <div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery4.png') }}">
+<img src="{{ url_for('static', filename='images/product/salt.jpg') }}">
 <div class="product-name">Salt 1kg</div>
 <div class="product-price">Rs.120.00</div>
 </div>
@@ -53,7 +68,7 @@ h1 { text-align:center; margin:20px 0; }
 
 <a href="{{ url_for('product_detail', product_id=505) }}" class="product-link">
 <div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery5.png') }}">
+<img src="{{ url_for('static', filename='images/product/cookingOil.jpg') }}">
 <div class="product-name">Cooking Oil 1L</div>
 <div class="product-price">Rs.900.00</div>
 </div>
@@ -61,7 +76,7 @@ h1 { text-align:center; margin:20px 0; }
 
 <a href="{{ url_for('product_detail', product_id=506) }}" class="product-link">
 <div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery6.png') }}">
+<img src="{{ url_for('static', filename='images/product/lentils.jpg') }}">
 <div class="product-name">Lentils 1kg</div>
 <div class="product-price">Rs.600.00</div>
 </div>
@@ -69,7 +84,7 @@ h1 { text-align:center; margin:20px 0; }
 
 <a href="{{ url_for('product_detail', product_id=507) }}" class="product-link">
 <div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery7.png') }}">
+<img src="{{ url_for('static', filename='images/product/chiliPowder.jpg') }}">
 <div class="product-name">Chili Powder 250g</div>
 <div class="product-price">Rs.250.00</div>
 </div>
@@ -77,15 +92,16 @@ h1 { text-align:center; margin:20px 0; }
 
 <a href="{{ url_for('product_detail', product_id=508) }}" class="product-link">
 <div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery8.png') }}">
+<img src="{{ url_for('static', filename='images/product/turmeric.jpg') }}">
 <div class="product-name">Turmeric Powder 250g</div>
 <div class="product-price">Rs.200.00</div>
 </div>
 </a>
 
+
 <a href="{{ url_for('product_detail', product_id=509) }}" class="product-link">
 <div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery9.png') }}">
+<img src="{{ url_for('static', filename='images/product/coconutmilk.jpg') }}">
 <div class="product-name">Coconut Milk 400ml</div>
 <div class="product-price">Rs.350.00</div>
 </div>
@@ -93,7 +109,7 @@ h1 { text-align:center; margin:20px 0; }
 
 <a href="{{ url_for('product_detail', product_id=510) }}" class="product-link">
 <div class="product-card">
-<img src="{{ url_for('static', filename='images/product/grocery10.png') }}">
+<img src="{{ url_for('static', filename='images/product/tomato.jpg') }}">
 <div class="product-name">Tomato Paste 200g</div>
 <div class="product-price">Rs.180.00</div>
 </div>
